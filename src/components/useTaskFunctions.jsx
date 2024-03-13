@@ -28,3 +28,13 @@ export const addTask = (todolist, setTodolist, input) => {
     setTodolist(updatedList);
   };
   
+  export const editTask = (todolist, setTodolist, index, newTask) => {
+    const updatedList = [...todolist];
+    if (index >= 0 && index < updatedList.length) {
+      updatedList[index] = { ...updatedList[index], task: newTask };
+      setTodolist(updatedList);
+    } else {
+      console.error("Invalid index provided for editing task.");
+    }
+  };
+  
