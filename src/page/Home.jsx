@@ -4,11 +4,11 @@ import { useLocalStorage } from '../components/useLocalStorage';
 import { addTask, deleteTask, toggleTaskCompletion, editTask } from '../components/useTaskFunctions';
 
 const Home = () => {
-  const [input, setInput] = useState('');
-  const [error, setError] = useState('');
-  const [search, setSearch] = useState('');
+  const [input, setInput] = useState("");
+  const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
   const [editIndex, setEditIndex] = useState(-1);
-  const [editValue, setEditValue] = useState('');
+  const [editValue, setEditValue] = useState("");
   const [todolist, setTodolist] = useLocalStorage('todolists', []); // Custom hook for local storage
   const [completedTodo, setCompletedTodo] = useLocalStorage('completedTodos', []); // Custom hook for local storage
   const [isActive, setIsActive] = useState(true);
@@ -124,7 +124,7 @@ const Home = () => {
             setError('')
             setInput(e.target.value)
           }} className="border border-black w-[100%] rounded-l px-2" placeholder="Enter Task..." />
-          <button type="submit" className="border border-black rounded-r bg-gray-200 hover:bg-gray-300 px-2 py-1 w-[30%]">Add</button>
+          <button disabled={!input} name="addtasks" type="submit" className="border border-black rounded-r bg-gray-200 hover:bg-gray-300 px-2 py-1 w-[30%]">Add</button>
         </form>
 
         {/* Displaying error if input is empty */}
@@ -144,7 +144,7 @@ const Home = () => {
             <p>No results found...!</p>
           ) : filteredTasks.length > 0 ? (
             filteredTasks.map((task, index) => (
-              <div className="flex justify-between border-b mt-1" key={index}>
+              <div  className="flex justify-between border-b mt-1" key={index}>
                 {/* Editing task */}
                 {editIndex === index ? (
                   <>
@@ -165,7 +165,7 @@ const Home = () => {
                 ) : (
                   <>
                     {/* Displaying task */}
-                    <p className={task.completed ? 'my-auto text-xl line-through' : 'my-auto text-xl'}>{task.task}</p>
+                    <p  className={task.completed ? 'my-auto text-xl line-through' : 'my-auto text-xl'}>{task.task}</p>
                     <div className="w-auto flex justify-between px-2 border-l">
                       <div className="flex">
                         {/* Checkbox for task completion */}
@@ -180,7 +180,7 @@ const Home = () => {
                 )}
               </div>
             ))
-          ) : <p>Your To-Do List Looks Empty Add Some Tasks to The List....!</p>)}
+          ) : <p>Your List Looks Empty Add Some Tasks to The List....!</p>)}
 
           {/* Displaying completed tasks */}
           {isActive === false && (noResultsFound ? (

@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/dom": "^9.3.4",
     "tailwindcss": "^3.4.1"
   }
 }
