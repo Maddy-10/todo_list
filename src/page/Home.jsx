@@ -170,11 +170,11 @@ const Home = () => {
                       <div className="flex">
                         {/* Checkbox for task completion */}
                         {task.completed && <p className="my-auto mr-1">Completed</p>}
-                        <input type="checkbox" disabled={task.completed} className="w-5 h-5 my-auto text-green-400 focus:ring-green-400" checked={task.completed} onChange={() => onCheck(index)} />
+                        <input type="checkbox" testid='check' disabled={task.completed} className="w-5 h-5 my-auto text-green-400 focus:ring-green-400" checked={task.completed} onChange={() => onCheck(index)} />
                       </div>
                       {/* Buttons for editing and deleting task */}
-                      <button disabled={task.completed} className="text-blue-500 rounded px-1 ml-1 my-1" onClick={() => onEditTask(index)}><MdEdit size={24} /></button>
-                      <button className="text-red-500  rounded px-1 ml-1 my-1" onClick={() => onDeleteTask(index)}><MdDeleteForever size={24} /></button>
+                      <button data-testid="btn-edit" disabled={task.completed}name='Edit' className="text-blue-500 rounded px-1 ml-1 my-1" onClick={() => onEditTask(index)}><MdEdit size={24} />Edit</button>
+                      <button data-testid="btn-del" className="text-red-500  rounded px-1 ml-1 my-1" onClick={() => onDeleteTask(index)}><MdDeleteForever size={24} />Delete</button>
                     </div>
                   </>
                 )}
@@ -214,7 +214,7 @@ const Home = () => {
                         {task.completed && <p className="my-auto mr-1">Completed on : {task.completedOn}</p>}
                       </div>
                       {/* Button to delete completed task */}
-                      <button className="text-red-500  rounded px-1 ml-1 my-1" onClick={() => onDeleteCompletedTask(index)}><MdDeleteForever size={24} /></button>
+                      <button data-testid="btn-del" className="text-red-500  rounded px-1 ml-1 my-1" onClick={() => onDeleteCompletedTask(index)}><MdDeleteForever size={24}  />Delete</button>
                     </div>
                   </>
                 )}
